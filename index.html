@@ -133,6 +133,22 @@ section{padding-top:36px}
 .menu li.star span:first-child::before{content:"★ ";color:var(--caramel)}
 .menu .legend{margin:0;padding:8px 14px 12px;font-size:.8rem;color:var(--muted)}
 
+/* rooms */
+.bldg{margin-top:20px}
+.bldg:first-of-type{margin-top:12px}
+.bldg-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.bldg-head h3{margin:0;font-size:1.02rem;font-weight:700}
+.bldg-head .meta{font-size:.85rem;color:var(--muted)}
+.bldg-head .tag{font-size:.75rem;padding:1px 9px;border-radius:999px;background:var(--sage-soft);color:var(--ink)}
+.rooms{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px;grid-template-columns:1fr}
+@media (min-width:520px){.rooms{grid-template-columns:1fr 1fr}}
+.room{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:14px}
+.room .rt{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.room .rt b{font-size:.95rem}
+.room .rt span{font-size:.82rem;color:var(--caramel);font-weight:500}
+.ppl{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.ppl li{font-size:.9rem;padding:3px 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+
 /* todo */
 .groups{display:grid;gap:28px;margin-top:16px}
 .grp{background:transparent}
@@ -166,7 +182,7 @@ footer{max-width:680px;margin:0 auto;padding:40px 24px 48px;color:var(--muted);f
 <header class="hero">
   <div class="hero-inner">
     <h1>宜蘭慢活放鬆二日遊</h1>
-    <p class="date">10/23（五）– 10/24（六）・13 人</p>
+    <p class="date">10/23（五）– 10/24（六）・16 人</p>
     <p class="vibe">尊重、友善、包容</p>
   </div>
 </header>
@@ -200,13 +216,53 @@ footer{max-width:680px;margin:0 auto;padding:40px 24px 48px;color:var(--muted);f
 
   <nav aria-label="頁面導覽">
     <ul>
-      <li><a href="#day1" class="on">Day 1</a></li>
+      <li><a href="#rooms" class="on">房間</a></li>
+      <li><a href="#day1">Day 1</a></li>
       <li><a href="#day2">Day 2</a></li>
       <li><a href="#todo">待辦清單</a></li>
     </ul>
   </nav>
 
   <main>
+
+  <section id="rooms">
+    <div class="sec-head">
+      <div class="num">Rooms</div>
+      <div><h2>房間分配</h2><p>共兩棟，入住時直接對照這裡</p></div>
+    </div>
+
+    <div class="bldg">
+      <div class="bldg-head"><h3>包棟</h3><span class="meta">四人房 2 間・二人房 2 間</span></div>
+      <ul class="rooms">
+        <li class="room">
+          <div class="rt"><b>四人房 1</b></div>
+          <ul class="ppl"><li>若筠</li><li>若筠老公</li><li>若筠兒</li><li>若筠女兒</li></ul>
+        </li>
+        <li class="room">
+          <div class="rt"><b>四人房 2</b></div>
+          <ul class="ppl"><li>Eva</li><li>Kim</li><li>Siko</li><li>Siko 兒</li><li>Ann</li></ul>
+        </li>
+        <li class="room">
+          <div class="rt"><b>二人房 1</b></div>
+          <ul class="ppl"><li>德全</li><li>Steven</li></ul>
+        </li>
+        <li class="room">
+          <div class="rt"><b>二人房 2</b></div>
+          <ul class="ppl"><li>Anita</li><li>Ann 媽</li></ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bldg">
+      <div class="bldg-head"><h3>另一棟</h3><span class="meta">四人房 1 間</span><span class="tag">含電梯</span></div>
+      <ul class="rooms">
+        <li class="room">
+          <div class="rt"><b>四人房</b></div>
+          <ul class="ppl"><li>Michelle</li><li>M 爸</li><li>M 媽</li></ul>
+        </li>
+      </ul>
+    </div>
+  </section>
 
   <section id="day1">
     <div class="sec-head">
@@ -319,7 +375,7 @@ footer{max-width:680px;margin:0 auto;padding:40px 24px 48px;color:var(--muted);f
         <div>
           <span class="time">09:30 – 10:15</span>
           <h3>打包行李 ✕ 辦理退房</h3>
-          <p>13 人上下行李與洗手間耗時，提早於 10:15 前集合完畢。</p>
+          <p>16 人上下行李與洗手間耗時，提早於 10:15 前集合完畢。</p>
         </div>
       </li>
       <li class="ev hi">
@@ -399,7 +455,7 @@ footer{max-width:680px;margin:0 auto;padding:40px 24px 48px;color:var(--muted);f
           <li><label><input type="checkbox" data-k="t1"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">傳藝門票預購：先在 Klook／KKday 線上購票，掃 QR Code 快速入園<span class="note">65 歲以上長輩（敬老票）及 6 歲以下兒童（免費）現場出示證件即可。</span>
             <span class="btns"><a class="btn" href="https://www.klook.com/zh-TW/search/?query=%E5%82%B3%E8%97%9D%E4%B8%AD%E5%BF%83" target="_blank" rel="noopener">Klook</a><a class="btn" href="https://www.kkday.com/zh-tw/product/productlist?keyword=%E5%82%B3%E8%97%9D%E4%B8%AD%E5%BF%83" target="_blank" rel="noopener">KKday</a></span></span></label></li>
           <li><label><input type="checkbox" data-k="t2"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">確認 10/23 去喜互惠採買的代表車輛與名單</span></label></li>
-          <li><label><input type="checkbox" data-k="t3"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">分配 13 人的搭車名單、駕駛與出發時間</span></label></li>
+          <li><label><input type="checkbox" data-k="t3"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">分配 16 人的搭車名單、駕駛與出發時間</span></label></li>
         </ul>
       </div>
 
@@ -471,9 +527,9 @@ footer{max-width:680px;margin:0 auto;padding:40px 24px 48px;color:var(--muted);f
   refresh();
 
   // highlight current section in nav
-  var links=document.querySelectorAll('nav a'), ids=['day1','day2','todo'];
+  var links=document.querySelectorAll('nav a'), ids=['rooms','day1','day2','todo'];
   function onScroll(){
-    var cur='day1';
+    var cur='rooms';
     ids.forEach(function(id){
       var el=document.getElementById(id);
       if(el && el.getBoundingClientRect().top < 140) cur=id;
