@@ -149,6 +149,19 @@ section{padding-top:36px}
 .ppl{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .ppl li{font-size:.9rem;padding:3px 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
 
+.cat{border-bottom:1px solid var(--line)}
+.cat summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:14px 0;min-height:48px}
+.cat summary::-webkit-details-marker{display:none}
+.cat .cn{flex:1;font-weight:700;font-size:.98rem}
+.cat .cc{font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.cat .cc.done{color:var(--caramel);font-weight:700}
+.cat .chev{width:18px;height:18px;color:var(--muted);transition:transform .2s;flex:none}
+.cat[open] .chev{transform:rotate(180deg)}
+@media (prefers-reduced-motion: reduce){.cat .chev{transition:none}}
+.cat ul{border-top:1px solid var(--line)}
+.cat li:last-child{border-bottom:0}
+.cat label{padding-left:4px}
+
 /* todo */
 .groups{display:grid;gap:28px;margin-top:16px}
 .grp{background:transparent}
@@ -416,6 +429,7 @@ footer{max-width:680px;margin:0 auto;padding:40px 24px 48px;color:var(--muted);f
           <span class="time">12:45 – 15:15</span>
           <h3>國立傳統藝術中心散步</h3>
           <p>從餐廳車程約 10 分鐘。全區平整好推車，老小皆宜。漫步文昌老街看捏麵人、拉糖蔥，臨水岸拍照、看戶外表演。</p>
+          <div class="alert"><span><b>現場購票</b>：到入口售票處買票。65 歲以上長輩（敬老票）及 6 歲以下兒童（免費）請備好證件。</span></div>
           <div class="place">
             <b>國立傳統藝術中心</b>
             <span class="a">宜蘭縣五結鄉五濱路二段 201 號</span>
@@ -452,8 +466,6 @@ footer{max-width:680px;margin:0 auto;padding:40px 24px 48px;color:var(--muted);f
         </div>
         <div class="bar"><i></i></div>
         <ul>
-          <li><label><input type="checkbox" data-k="t1"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">傳藝門票預購：先在 Klook／KKday 線上購票，掃 QR Code 快速入園<span class="note">65 歲以上長輩（敬老票）及 6 歲以下兒童（免費）現場出示證件即可。</span>
-            <span class="btns"><a class="btn" href="https://www.klook.com/zh-TW/search/?query=%E5%82%B3%E8%97%9D%E4%B8%AD%E5%BF%83" target="_blank" rel="noopener">Klook</a><a class="btn" href="https://www.kkday.com/zh-tw/product/productlist?keyword=%E5%82%B3%E8%97%9D%E4%B8%AD%E5%BF%83" target="_blank" rel="noopener">KKday</a></span></span></label></li>
           <li><label><input type="checkbox" data-k="t2"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">確認 10/23 去喜互惠採買的代表車輛與名單</span></label></li>
           <li><label><input type="checkbox" data-k="t3"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">分配 16 人的搭車名單、駕駛與出發時間</span></label></li>
         </ul>
@@ -462,17 +474,58 @@ footer{max-width:680px;margin:0 auto;padding:40px 24px 48px;color:var(--muted);f
       <div class="grp" id="shop">
         <div class="grp-head">
           <div class="ic" aria-hidden="true">🛒</div>
-          <h3>10/23 喜互惠採買清單</h3>
+          <h3>10/23 喜互惠建議採買清單</h3>
           <span class="count t-pink" data-count></span>
         </div>
         <div class="bar"><i></i></div>
-        <ul>
-          <li><label><input type="checkbox" data-k="s1"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">生鮮蔬菜：包肉美生菜、金針菇、香菇</span></label></li>
-          <li><label><input type="checkbox" data-k="s2"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">飲品酒水：瓶裝水、無糖茶、汽水、啤酒／紅白酒</span></label></li>
-          <li><label><input type="checkbox" data-k="s3"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">零食副食：冰塊、大人小孩愛吃的水果、飯後零食</span></label></li>
-          <li><label><input type="checkbox" data-k="s4"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">其他耗材：濕紙巾、大垃圾袋、紙杯、筷子</span></label></li>
-        </ul>
-        <p class="foot">烤肉食材、肉品、海鮮、玉米筍時蔬、棉花糖及基本用具組已內含在預訂套餐中。</p>
+        <details class="cat">
+          <summary><span class="cn">食材</span><span class="cc" data-cc></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <ul>
+          <li><label><input type="checkbox" data-k="b1"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">生鮮蔬菜：包肉美生菜、金針菇、香菇</span></label></li>
+          <li><label><input type="checkbox" data-k="b2"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">梅花豬或豬五花燒肉片<span class="note">1 盒（約 500g）・補足非內臟的肉，長輩好咬</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b5"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">百頁豆腐或豆干<span class="note">1–2 盒</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b7"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">吐司<span class="note">1 條・套餐只有半條</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b9"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">杏鮑菇、青椒或甜椒、洋蔥<span class="note">各 1–2 包或 2–3 顆</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b10"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">烤肉醬<span class="note">1 瓶・套餐只附一瓶</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b11"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">奶油、檸檬、胡椒鹽<span class="note">奶油 1 條、檸檬 2–3 顆</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b12"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">當季水果<span class="note">2–3 種，挑好剝好切的</span></span></label></li>
+          </ul>
+        </details>
+        <details class="cat">
+          <summary><span class="cn">零食</span><span class="cc" data-cc></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <ul>
+          <li><label><input type="checkbox" data-k="b13"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">洋芋片、餅乾<span class="note">4–5 包</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b14"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">魷魚絲、堅果、海苔<span class="note">各 1–2 包・下酒菜</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b15"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">布丁或果凍<span class="note">依小孩人數・飯後點心</span></span></label></li>
+          </ul>
+        </details>
+        <details class="cat">
+          <summary><span class="cn">飲品酒水</span><span class="cc" data-cc></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <ul>
+          <li><label><input type="checkbox" data-k="b17"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">無糖茶<span class="note">2L × 3–4 瓶</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b18"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">汽水或果汁<span class="note">2L × 2–3 瓶</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b20"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">啤酒<span class="note">先抓 1 箱（24 罐），依會喝的人數調整</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b21"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">紅白酒<span class="note">1–2 瓶</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b22"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">冰塊<span class="note">2–3 包</span></span></label></li>
+          </ul>
+        </details>
+        <details class="cat">
+          <summary><span class="cn">耗材</span><span class="cc" data-cc></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <ul>
+          <li><label><input type="checkbox" data-k="b24"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">濕紙巾、大垃圾袋、紙杯、筷子</span></label></li>
+          <li><label><input type="checkbox" data-k="b25"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">紙盤（大小各一）、紙碗<span class="note">各 30–40 個</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b26"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">錫箔紙<span class="note">1–2 捲</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b27"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">竹籤<span class="note">1 包・烤棉花糖、串蔬菜</span></span></label></li>
+          <li><label><input type="checkbox" data-k="b28"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">廚房紙巾<span class="note">2 捲</span></span></label></li>
+          </ul>
+        </details>
+        <details class="cat">
+          <summary><span class="cn">先問咖啡太太再決定</span><span class="cc" data-cc></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <ul>
+          <li><label><input type="checkbox" data-k="b32"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span class="txt">木炭、火種<span class="note">用具組沒附的話：木炭約 3 公斤＋火種 1 包</span></span></label></li>
+          </ul>
+        </details>
+        <p class="foot">套餐已含：肉品海鮮、香腸、糯米腸、天婦羅、玉米筍時蔬、黃金泡菜、棉花糖、吐司半條、烤肉醬一瓶及烤肉用具組。份量以 16 人（含 3 位小孩）概估，可依現場增減。</p>
       </div>
 
       <div class="grp">
@@ -506,6 +559,13 @@ footer{max-width:680px;margin:0 auto;padding:40px 24px 48px;color:var(--muted);f
       all.forEach(function(b){ if(b.checked) n++; });
       g.querySelector('[data-count]').textContent=n+' / '+all.length;
       g.querySelector('.bar i').style.width=(all.length? n/all.length*100:0)+'%';
+    });
+    document.querySelectorAll('.cat').forEach(function(c){
+      var all=c.querySelectorAll('input[type=checkbox]'), n=0;
+      all.forEach(function(b){ if(b.checked) n++; });
+      var el=c.querySelector('[data-cc]');
+      el.textContent=n+' / '+all.length;
+      el.classList.toggle('done', all.length>0 && n===all.length);
     });
   }
   boxes.forEach(function(b){
